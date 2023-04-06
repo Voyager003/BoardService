@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link th:href="@{/css/bootstrap.min.css}"
+          href="../css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="wrapper">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="py-5 text-center">
+                <h2>게시판</h2>
+            </div>
+            <button class="btn btn-dark"
+                    th:onclick="|location.href='@{/}'|" type="button">
+                홈 화면
+            </button>
+
+            <button class="btn btn-primary"
+                    th:onclick="|location.href='@{/board/register}'|" type="button">
+                게시글 작성
+            </button>
+
+            <hr class="my-4">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="10%">게시글번호</th>
+                    <th width="">제목</th>
+                    <th width="20%">작성자</th>
+                    <th width="20%">작성일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="post : ${list}">
+                    <td>
+                        <a th:href="@{/board/{postId}(postId=${post.id})}"
+                           th:text="${post.id}">게시글 번호</a>
+                    </td>
+                    <td>
+                        <a th:href="@{/board/{postId}(postId=${post.id})}"
+                           th:text="${post.title}">제목</a>
+                    </td>
+                    <td th:text="${post.user.loginId}">작성자</td>
+                    <td th:text="${post.registerDate}">작성일</td>
+                </tr>
+                </tbody>
+            </table>
+            <hr class="my-4">
+
+        </div>
+    </div>
+</div>
+
+</body>
