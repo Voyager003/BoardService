@@ -14,13 +14,13 @@
     }
   </style>
 </head>
-
+정
 <body>
 <div class="container">
   <div class="py-5 text-center">
     <h2>로그인</h2>
   </div>
-  <form action="item.html" th:action="" th:object="${loginForm}" method="post">
+  <form role="form" action="/auth/login" th:object="${loginForm}" method="post">
 
     <div th:if="${#fields.hasGlobalErrors()}">
       <p class="field-error" th:each="err : ${#fields.globalErrors()}"
@@ -31,14 +31,14 @@
       <label for="loginId">ID</label>
       <input type="text" id="loginId" th:field="*{loginId}" class="form-control"
              th:errorclass="field-error">
-      <div class="field-error" th:errors="*{loginId}" />
+      <p th:if="${#fields.hasErrors('loginId')}" th:errors="*{loginId}">Incorrect id</p>
     </div>
     <div>
       <label for="password">비밀번호</label>
       <input type="password" id="password" th:field="*{password}"
              class="form-control"
              th:errorclass="field-error">
-      <div class="field-error" th:errors="*{password}" />
+      <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Incorrect id</p>
     </div>
 
     <hr class="my-4">
