@@ -39,4 +39,12 @@ public class UserService {
     public List<User> findUsers() {
         return userRepository.findAll();
     }
+
+    // 로그인
+    @Transactional
+    public User login(String loginId, String password) {
+        return userRepository.findByLoginId(loginId)
+                .filter(u -> u.getPassword().equals(password))
+                .orElse(null);
+    }
 }
