@@ -29,11 +29,18 @@ public class Post {
     }
 
     @Builder
-
     public Post(String title, String content, User user,  LocalDateTime createdDate) {
         this.title = title;
         this.content = content;
         this.user = user;
         this.createdDate = createdDate;
+    }
+
+    // 게시물 작성
+    public static Post createPost(String title, String content, User user) {
+        return Post.builder()
+                .title(title).content(content).user(user)
+                .createdDate(LocalDateTime.now())
+                .build();
     }
 }
