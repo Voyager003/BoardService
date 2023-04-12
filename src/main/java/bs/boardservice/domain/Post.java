@@ -29,7 +29,7 @@ public class Post {
     }
 
     @Builder
-    public Post(String title, String content, User user,  LocalDateTime createdDate) {
+    public Post(String title, String content, User user, LocalDateTime createdDate) {
         this.title = title;
         this.content = content;
         this.user = user;
@@ -42,5 +42,11 @@ public class Post {
                 .title(title).content(content).user(user)
                 .createdDate(LocalDateTime.now())
                 .build();
+    }
+
+    // 게시물 수정
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 }
