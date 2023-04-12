@@ -52,4 +52,39 @@ public class PostController {
 
         return "redirect:/post";
     }
+
+    @GetMapping("/{postId}/edit")
+    public String editForm(@PathVariable Long postId, Model model) {
+
+        Post post = postService.findOne(postId).orElseThrow();
+
+        PostForm postForm = new PostForm();
+        postForm.setTitle(post.getTitle());
+        postForm.setContent(post.getContent());
+
+        model.addAttribute("postForm", postForm);
+        model.addAttribute("postId", postId);
+
+        return "board/editform";
+    }
+
+    @PostMapping("/{postId}/edit")
+    public String edit(@PathVariable Long postId,
+                       @Validated @ModelAttribute PostForm postForm,
+                       BindingResult bindingResult) {
+
+        if (bindingResult.hasErrors()) {
+            return "board/editform";
+        }
+
+        postService.updatePost(postId, postForm.getTitle(), postForm.getContent());
+
+        return "redirect:/post/{postId}";
+    }
+
+    @PostMapping("/{postId}/delete")
+    public String delete(@PathVariable Long postId) {
+        postService.deleteById(postId);
+        return "redirect:/post";
+    }
 }
