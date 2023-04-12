@@ -1,4 +1,4 @@
-package bs.boardservice.application;
+package bs.boardservice.application.form;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
