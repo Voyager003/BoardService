@@ -55,14 +55,14 @@
   </div>
   <hr class="my-4">
 
-  <button class="btn btn-primary"
-          th:onclick="|location.href='@{/board/{postId}/edit(postId=${post.id})}'|"
-          type="button">수정</button>
+  <form th:action="@{/post/{postId}/delete(postId=${post.id})}" method="post">
 
-  <button class="btn btn-danger"
-          th:onclick="|location.href='@{/board/{postId}/delete(postId=${post.id})}'|"
-          type="button">삭제</button>
+    <button class="btn btn-primary"
+            th:onclick="|location.href='@{/post/{postId}/edit(postId=${post.id})}'|"
+            type="button">수정</button>
 
+    <button class="btn btn-danger" type="submit">삭제</button>
+  </form>
 
 </div> <!-- /container -->
 
