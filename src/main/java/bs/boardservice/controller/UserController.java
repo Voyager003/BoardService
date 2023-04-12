@@ -1,8 +1,8 @@
 package bs.boardservice.controller;
 
-import bs.boardservice.application.LoginForm;
+import bs.boardservice.application.form.LoginForm;
 import bs.boardservice.application.SessionConst;
-import bs.boardservice.application.UserForm;
+import bs.boardservice.application.form.UserForm;
 import bs.boardservice.application.service.UserService;
 import bs.boardservice.domain.User;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,7 +16,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.SessionAttribute;
 
 @Controller
 @RequiredArgsConstructor
