@@ -19,7 +19,7 @@
             </button>
 
             <button class="btn btn-primary"
-                    th:onclick="|location.href='@{/board/register}'|" type="button">
+                    th:onclick="|location.href='@{/post/register}'|" type="button">
                 게시글 작성
             </button>
 
@@ -37,15 +37,15 @@
                 <tbody>
                 <tr th:each="post : ${list}">
                     <td>
-                        <a th:href="@{/board/{postId}(postId=${post.id})}"
+                        <a th:href="@{/post/{postId}(postId=${post.id})}"
                            th:text="${post.id}">게시글 번호</a>
                     </td>
                     <td>
-                        <a th:href="@{/board/{postId}(postId=${post.id})}"
+                        <a th:href="@{/post/{postId}(postId=${post.id})}"
                            th:text="${post.title}">제목</a>
                     </td>
                     <td th:text="${post.user.loginId}">작성자</td>
-                    <td th:text="${post.registerDate}">작성일</td>
+                    <td th:text="${post.createdDate}">작성일</td>
                 </tr>
                 </tbody>
             </table>
