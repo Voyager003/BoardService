@@ -43,4 +43,11 @@ public class PostService {
     public void deleteById(Long id) {
         postRepository.deleteById(id);
     }
+
+    // 게시글 수정
+    @Transactional
+    public void updatePost(Long id, String title, String content) {
+        Post post = postRepository.findById(id).orElseThrow();
+        post.update(title, content);
+    }
 }
